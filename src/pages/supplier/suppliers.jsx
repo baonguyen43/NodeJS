@@ -5,8 +5,8 @@ import {
   message,
  
 } from "antd";
-import axiosClient from "../libraries/axiosClient";
-import SupplierForm from "../components/SupplierForm";
+import axiosClient from "../../libraries/axiosClient";
+import SupplierForm from "../../components/SupplierForm";
 
 const MESSAGE_TYPE = {
   SUCCESS: "success",
@@ -58,7 +58,7 @@ export default function SupplierPage() {
         onFinish={onFinish}
         formName="add-suppliers-form"
         optionStyle={{
-          maxWidth: 900,
+          maxWidth: 650,
           margin: "60px auto",
         }}
       />

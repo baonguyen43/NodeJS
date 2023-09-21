@@ -14,6 +14,8 @@ function SupplierForm(props) {
   } = props;
 
   return (
+    <div style={{textAlign: "center", fontSize: 20, fontWeight:700, marginTop:60}}>
+      <p> Thêm mới Nhà Cung Cấp </p>
     <Form
       form={form}
       className=""
@@ -82,6 +84,8 @@ function SupplierForm(props) {
         </Form.Item>
       )}
     </Form>
+    </div>
+
   );
 }
 

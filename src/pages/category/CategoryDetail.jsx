@@ -18,7 +18,7 @@ const MESSAGE_TYPE = {
 
 numeral.locale('vi');
 
-export default function ProductDetail() {
+export default function CategoryDetail() {
   const params = useParams();
   const navigate = useNavigate();
 
@@ -38,13 +38,13 @@ export default function ProductDetail() {
     [messageApi],
   );
 
-  const onDeleteProduct = useCallback(async () => {
+  const onDeleteCategory = useCallback(async () => {
     try {
-      const response = await axiosClient.delete(`products/delete/${params.id}`);
+      const response = await axiosClient.delete(`categories/delete/${params.id}`);
 
       onShowMessage(response.data.message);
 
-      navigate(LOCATIONS.PRODUCTS);
+      navigate(LOCATIONS.CATEGORIES);
     } catch (error) {
       console.log('««««« error »»»»»', error);
     }
@@ -68,9 +68,9 @@ export default function ProductDetail() {
     }
   }, []);
 
-  const getProductData = useCallback(async () => {
+  const getCategoryData = useCallback(async () => {
     try {
-      const res = await axiosClient.get(`/products/${params.id}`);
+      const res = await axiosClient.get(`/categories/${params.id}`);
 
       productForm.setFieldsValue(res.data.payload);
     } catch (error) {
@@ -108,9 +108,9 @@ export default function ProductDetail() {
   );
   useEffect(() => {
     if (isEditProduct) {
-      getProductData();
+      getCategoryData();
     }
-  }, [getProductData, isEditProduct, params.id]);
+  }, [getCategoryData, isEditProduct, params.id]);
 
   return (
     <>
@@ -127,12 +127,18 @@ export default function ProductDetail() {
         }}
         onFinish={onAddProduct}
       />
+
       {/* {isEditProduct && (
-      
-          <Button danger type="dashed" onChange={onDeleteProduct(params.id)} icon={<DeleteOutlined />}>
+        <Popconfirm
+          title="Are you sure to delete?"
+          okText="Đồng ý"
+          cancelText="Đóng"
+          onConfirm={onDeleteProduct}
+        >
+          <Button danger type="dashed" icon={<DeleteOutlined />}>
             Xóa
           </Button>
-        
+        </Popconfirm>
       )
     } */}
     </>

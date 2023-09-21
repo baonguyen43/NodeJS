@@ -9,7 +9,8 @@ import {
   Space,
   Modal,
   Pagination,
-  Typography
+  Typography,
+  Breadcrumb
 } from 'antd';
 import numeral from 'numeral';
 import 'numeral/locales/vi';
@@ -19,6 +20,8 @@ import { Link } from 'react-router-dom';
 import axiosClient from '../../libraries/axiosClient';
 import ProductForm from '../../components/ProductForm';
 import Search from 'antd/es/input/Search';
+import CategoryForm from 'components/CategoryForm';
+import SupplierForm from 'components/SupplierForm';
 
 const {Text} = Typography;  
 const MESSAGE_TYPE = {
@@ -164,7 +167,7 @@ export default function Products() {
       key: 'name',
       sorter: (a,b) => a.name.localeCompare(b.name), 
       render: function (text, record) {
-      return <Link to={`${record._id}`}>{text}</Link>;
+      return <Link  to={`/products/${record._id}`}>{text}</Link>;
       },
     },
     //Supplier 
@@ -325,8 +328,26 @@ export default function Products() {
   }, [getProducts, refresh]);
 
   return (
-    <div style={{width: "1200px", height:"450px", overflowX: 'auto', margin:'auto', paddingTop:'20px' }}>
+    <div style={{width: "1200px", height:"450px",  margin:'auto', paddingTop:'20px' }}> 
+    <div >
       {contextHolder}
+      <Breadcrumb style={{fontSize: 16, fontWeight: 800}}
+        items = {[
+          {
+            title: <a href='/products/add'> Add Product </a>,
+            component: <ProductForm/> 
+          },  
+          {
+            title: <a href='/categories'> Add Category </a>, 
+            component: <CategoryForm/> 
+          }, 
+          {
+            title: <a href='/suppliers'>Add Supplier </a>,
+            component: <SupplierForm/> 
+          },
+         
+        ]}
+      /> 
       <Search 
         placeholder="Tìm kiếm sản phẩm"
         allowClear
@@ -361,13 +382,7 @@ export default function Products() {
         // style={{ maxHeight: 77}}
         pagination={false}
       /> 
-      <Pagination
-        defaultCurrent={1}
-        total={pagination.total}
-        pageSize={DEFAULT_LIMIT}
-        onChange={onChangePage}
-        current={pagination.page}
-      />
+      
 
       <Modal
         open={editModalVisible}
@@ -391,6 +406,15 @@ export default function Products() {
           isHiddenSubmit
         />
       </Modal>
+      <Pagination 
+        defaultCurrent={1}
+        total={pagination.total}
+        pageSize={DEFAULT_LIMIT}
+        onChange={onChangePage}
+        current={pagination.page}
+      />
+    </div>
+   
     </div>
   );
 }

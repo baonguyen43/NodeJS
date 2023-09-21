@@ -5,10 +5,10 @@ import axiosClient from "libraries/axiosClient";
 import { LOCATIONS } from "constants";
 
 import Login from "./pages/login";
-import CategoryPage from "./pages/Categories";
+import CategoryPage from "./pages/category/Categories";
 import ProductList from "./pages/product";
 import ProductDetail from "./pages/product/ProductDetail";
-import SupplierPage from "./pages/suppliers";
+import SupplierPage from "./pages/supplier/suppliers";
 
 import "./App.css";
 

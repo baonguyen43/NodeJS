@@ -20,6 +20,8 @@ function CategoryForm(props) {
   } = props;
 
   return (
+    <div style={{textAlign: "center", fontSize: 20, fontWeight:700, marginTop:60}}> 
+    <div> Thêm mới Danh mục</div>
     <Form
       form={form}
       className=""
@@ -68,6 +70,7 @@ function CategoryForm(props) {
         </Form.Item>
       )}
     </Form>
+    </div>
   );
 }
 

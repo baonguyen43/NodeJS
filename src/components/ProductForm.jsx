@@ -20,6 +20,7 @@ function ProductForm(props) {
   } = props;
 
   return (
+    <div style={{textAlign: "center", fontSize: 20, fontWeight:700, marginTop:60}}>
     <Form
       form={form}
       className=""
@@ -122,7 +123,7 @@ function ProductForm(props) {
       </Form.Item>
 
       {!isHiddenSubmit && (
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item wrapperCol={{  }}>
             <ConfigProvider theme={{ components:{Button:{colorPrimary:"#F81D22", colorPrimaryHover:"#E8D44D"}}}}>
       <Button type="primary" htmlType="submit">
             Submitt
@@ -132,6 +133,8 @@ function ProductForm(props) {
       )}
     
     </Form>
+    </div>
+    
   );
 }
 
