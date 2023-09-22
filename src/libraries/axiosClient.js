@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-  baseURL: process.env.URL_BE,
+  baseURL:window.location.hostname.includes('localhost')? "http://localhost:9000" :'https://batch31-nguyenne.onrender.com/',
   headers: { "Content-Type": "application/json" },
 });
 
