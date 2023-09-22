@@ -13,21 +13,21 @@ import SupplierPage from "./pages/supplier/suppliers";
 import "./App.css";
 
 function App() {
-  const navigate = useNavigate();
-  const token = window.localStorage.getItem("TOKEN");
-  useEffect(() => {
-    if (token) {
-      axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
-    } else {
-      navigate(LOCATIONS.LOGIN);
-    }
-  }, [navigate, token]);
+  // const navigate = useNavigate();
+  // const token = window.localStorage.getItem("TOKEN");
+  // useEffect(() => {
+  //   if (token) {
+  //     axiosClient.defaults.headers.Authorization = `Bearer ${token}`;
+  //   } else {
+  //     navigate(LOCATIONS.LOGIN);
+  //   }
+  // }, [navigate, token]);
 
-  return !token ? (
-    <Routes>
-      <Route path="login" element={<Login />} />
-    </Routes>
-  ) : (
+  // return !token ? (
+  //   <Routes>
+  //     <Route path="login" element={<Login />} />
+  //   </Routes>) : 
+  return(
     <Routes>
       <Route index element={<ProductList />} />
       <Route path="products" element={<ProductList />} />
